@@ -1,4 +1,5 @@
 #include <raylib.h>
+#include <iostream>
 #include "game.h"
 
 Game::Game() {
@@ -19,22 +20,27 @@ void Game::start() {
 void Game::handleInput(int userInput) {
     Position new_position = *snake.head;
 
-     switch(userInput) {
+    switch(userInput) {
         case(KEY_LEFT):
             new_position.x -= 1;
             snake.move(new_position, 4);
+            break;
 
         case(KEY_RIGHT):
             new_position.x += 1;
             snake.move(new_position, 4);
+            break;
 
         case(KEY_UP):
             new_position.y -= 1;
             snake.move(new_position, 4);
+            break;
             
         case(KEY_DOWN):            
             new_position.y += 1;
             snake.move(new_position, 4);
+            break;
     }
 }
+
 

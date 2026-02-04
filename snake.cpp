@@ -34,16 +34,12 @@ Sistema di movimento
 
 void Snake::move(Position newPosition, int index)
 {
-    std::cout << "ENTER index = " << index << std::endl;
         if (index == 0) {
         positions[0] = newPosition;
-        std::cout << "BASE CASE\n";
         return;
     }
-
     Position old = positions[index];
     positions[index] = newPosition;
     move(old, index - 1);
-    std::cout << "EXIT index = " << index << std::endl;
     return;
 }
