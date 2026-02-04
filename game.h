@@ -6,11 +6,16 @@
 class Game{
     public:
         Game();
-        void start();
+        void start();           
+        void goForward();        
     
     private:
         Grid grid;
         Snake snake;
         Apple apple;
-        void handleInput(int userInput);
+        double lastUpdatedTime;
+        void handleInput(int input);
+        int lastMove;
+        int userInput;     
+        
 };
