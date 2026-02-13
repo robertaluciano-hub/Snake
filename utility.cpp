@@ -13,3 +13,10 @@ bool Utility::contains(std::vector<Position> pos_vector, Position pos)
     }
     return false;
 }
+
+void Utility::printVector(std::vector<Position> pos_vector)
+{
+    for(Position item : pos_vector) {
+        item.print();
+    }
+}

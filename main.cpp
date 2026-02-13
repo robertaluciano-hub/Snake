@@ -17,7 +17,7 @@ int main () {
 
     const int SCREEN_WIDTH = 500;
     const int SCREEN_HEIGHT = 500;
-    double interval = 0.5;    
+    double interval = 0.2;    
 
     InitWindow(SCREEN_WIDTH, SCREEN_HEIGHT, "Snake");
     SetTargetFPS(60);

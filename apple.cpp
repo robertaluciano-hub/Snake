@@ -9,9 +9,14 @@ Apple::Apple() {
 
 void Apple::spawnAtRandomPosition()
 {
-    int randomX = rand() % grid.numRows;
-    int randomY = rand() % grid.numCols;
+    int randomX, randomY;
 
+    do {
+        int randomX = rand() % grid.numRows;
+        int randomY = rand() % grid.numCols;
+    }
+    while(grid.grid[randomX][randomY] != 0);
+    
     position = Position(randomX, randomY);
 }
 

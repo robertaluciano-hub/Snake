@@ -9,6 +9,7 @@ Game::Game() {
     snake = Snake();
     apple = Apple();
     lastUpdatedTime = 0;
+    gameOver = false;
 }
 
 void Game::start() {
@@ -35,36 +36,52 @@ void Game::GameOver()
 
 }
 
-void Game::handleInput(int input) {
-    Position new_position = *snake.head;
-
-    switch(input) {
-        case(KEY_LEFT):
-            new_position.y -= 1;
-            snake.move(new_position, 0);
-            break;
-
-        case(KEY_RIGHT):
-            new_position.y += 1;
-            snake.move(new_position, 0);
-            break;
-
-        case(KEY_UP):
-            new_position.x -= 1;
-            snake.move(new_position, 0);
-            break;
-            
-        case(KEY_DOWN):            
-            new_position.x += 1;
-            snake.move(new_position, 0);
-            break;
-    }
-    grid.update(snake.positions, apple.position);
-
+void Game::checkAppleCollision() {
     if(snake.head->equals(apple.position)) {
-        Position new_block = Position(snake.tail->x, (snake.tail->y)-1);     // SOSTITUIRE COORDINATE
-        //snake.extendSnake(new_block);
+        Position new_block = Position(snake.tail->x, snake.tail->y);
+        snake.extendSnake(new_block);
         apple.spawnAtRandomPosition();
     }
 }
+
+void Game::checkWallCollision() {
+    Position head_pos = *snake.head;
+
+    if(head_pos.x >= grid.numRows || head_pos.x < 0 || head_pos.y >= grid.numCols || head_pos.y < 0) {
+        std::cout << " GAME OVER ";
+        gameOver = true;
+    }
+}
+
+void Game::handleInput(int input) {
+    if(!gameOver) {
+        Position new_position = *snake.head;
+        checkAppleCollision();    
+
+        switch(input) {
+            case(KEY_LEFT):
+                new_position.y -= 1;
+                snake.move(new_position, 0);
+                break;
+
+            case(KEY_RIGHT):
+                new_position.y += 1;
+                snake.move(new_position, 0);
+                break;
+
+            case(KEY_UP):
+                new_position.x -= 1;
+                snake.move(new_position, 0);
+                break;
+                
+            case(KEY_DOWN):            
+                new_position.x += 1;
+                snake.move(new_position, 0);
+                break;
+        }
+        checkWallCollision();
+        grid.update(snake.positions, apple.position);
+    }
+}
+
 

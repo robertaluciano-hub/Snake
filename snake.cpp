@@ -1,5 +1,6 @@
 #include "snake.h"
 #include "raylib.h"
+#include "utility.h"
 #include <iostream>
 
 
@@ -11,9 +12,11 @@ Snake::Snake() {
 
 void Snake::extendSnake(Position new_block)
 {
+    Utility::printVector(positions);
     positions.push_back(new_block);
-    tail = &positions[positions.size() - 1];
-    
+    tail = &positions[positions.size() - 1]; 
+    head = &positions[0];   
+    Utility::printVector(positions);
 }
 
 void Snake::checkCollision()
