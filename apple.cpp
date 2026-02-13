@@ -3,6 +3,7 @@
 
 Apple::Apple() {
     radius = grid.cellWidth / 2 - 2;
+    position = Position(10,7);
 }
 
 void Apple::spawnAtRandomPosition()
@@ -10,8 +11,7 @@ void Apple::spawnAtRandomPosition()
 
 }
 
-void Apple::draw(int row, int column)
+void Apple::draw()
 {
-    //DrawRectangle(row*grid.cellWidth + grid.marginX, column*grid.cellWidth + grid.marginY, grid.cellWidth-2, grid.cellWidth-2, RED);
-    DrawCircle(row*grid.cellWidth + grid.marginX + radius + 1, column*grid.cellWidth + grid.marginY + radius + 1, radius, RED);
+    DrawCircle(position.y*grid.cellWidth + grid.marginX + radius + 1, position.x*grid.cellWidth + grid.marginY + radius + 1, radius, RED);
 }

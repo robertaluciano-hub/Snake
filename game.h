@@ -7,7 +7,8 @@ class Game{
     public:
         Game();
         void start();           
-        void goForward();        
+        void goForward();  
+        void GameOver();      
     
     private:
         Grid grid;

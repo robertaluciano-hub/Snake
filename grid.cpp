@@ -1,6 +1,7 @@
 #include <iostream>
 #include "raylib.h"
 #include "grid.h"
+#include "utility.h"
 
 Grid::Grid() {
     numRows = 14;
@@ -38,7 +39,26 @@ void Grid::draw()
     }
 }
 
-void Grid::update(int row, int column, int val)
+void Grid::update(std::vector<Position> snake_pos, Position apple_pos) 
 {
-    grid[row][column] = val;
+    // per ogni elemento della matrice controllo se quella posizione è occupata da snake o dalla mela
+    // se è occupata da snake metto 1, se è occupata dalla mela metto 2, altrimenti metto 0
+
+    for(int row=0;row<numRows;row++) {
+       for(int column=0;column<numCols;column++) {
+            Position pos = Position(row, column);
+            if (Utility::contains(snake_pos, pos)) {
+                grid[row][column] = 1;
+            }
+            else if(pos.equals(apple_pos)) {
+                grid[row][column] = 2;
+            }
+            else {
+                grid[row][column] = 0;
+            }
+       } 
+       std::cout << std::endl;
+    }
 }
+
+

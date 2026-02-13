@@ -20,7 +20,7 @@ void Snake::checkCollision()
 void Snake::drawSnake() {
     
     for (Position item : positions) {
-        Rectangle rect = {item.x * grid.cellWidth + grid.marginX, item.y * grid.cellWidth + grid.marginY, grid.cellWidth - 2, grid.cellWidth - 2};
+        Rectangle rect = {item.y * grid.cellWidth + grid.marginX, item.x * grid.cellWidth + grid.marginY, grid.cellWidth - 2, grid.cellWidth - 2};
         DrawRectangleRounded(rect, 0.5, 6, DARKGREEN);
     }
 }
@@ -43,3 +43,4 @@ void Snake::move(Position newPosition, int index)
     move(old, index - 1);
     return;
 }
+

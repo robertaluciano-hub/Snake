@@ -15,3 +15,11 @@ void Position::print()
 {
     std::cout << x << " " << y << std::endl;
 }
+
+bool Position::equals(Position pos)
+{
+    if (pos.x == this->x && pos.y == this->y) {
+        return true;
+    }
+        return false;
+}

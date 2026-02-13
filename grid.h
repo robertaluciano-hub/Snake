@@ -1,4 +1,6 @@
 #pragma once
+#include <vector>
+#include "position.h"
 
 class Grid {
     public:
@@ -10,7 +12,7 @@ class Grid {
         void create();
         void print();
         void draw();
-        void update(int row, int column, int val);
+        void update(std::vector<Position> snake_pos, Position apple_pos);
     private:
         int numRows;
         int numCols;

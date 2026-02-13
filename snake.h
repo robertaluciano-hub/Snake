@@ -12,9 +12,5 @@ class Snake {
         void drawSnake();
         void move(Position newPosition, int index);
         Position *head;
-    private:
         std::vector<Position> positions;
-        
-        
-        
 };

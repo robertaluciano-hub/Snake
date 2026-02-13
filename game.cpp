@@ -1,6 +1,8 @@
 #include <raylib.h>
 #include <iostream>
+#include <vector>
 #include "game.h"
+#include "position.h"
 
 Game::Game() {
     grid = Grid();
@@ -12,7 +14,7 @@ Game::Game() {
 void Game::start() {
     grid.draw();
     snake.drawSnake();
-    apple.draw(10,7);
+    apple.draw();
 
     userInput = GetKeyPressed();
 
@@ -28,28 +30,35 @@ void Game::goForward()
     handleInput(lastMove);
 }
 
+void Game::GameOver()
+{
+
+}
+
 void Game::handleInput(int input) {
     Position new_position = *snake.head;
 
     switch(input) {
         case(KEY_LEFT):
-            new_position.x -= 1;
+            new_position.y -= 1;
             snake.move(new_position, 4);
             break;
 
         case(KEY_RIGHT):
-            new_position.x += 1;
+            new_position.y += 1;
             snake.move(new_position, 4);
             break;
 
         case(KEY_UP):
-            new_position.y -= 1;
+            new_position.x -= 1;
             snake.move(new_position, 4);
             break;
             
         case(KEY_DOWN):            
-            new_position.y += 1;
+            new_position.x += 1;
             snake.move(new_position, 4);
             break;
     }
+    grid.update(snake.positions, apple.position);
 }
+
