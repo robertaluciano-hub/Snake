@@ -4,12 +4,15 @@
 
 
 Snake::Snake() {
-    positions = {Position(2, 7), Position(3, 7), Position(4, 7), Position(5, 7), Position(6, 7)};
-    head = &positions[positions.size() - 1];
+    positions = {Position(6, 7), Position(5, 7), Position(4, 7), Position(3, 7), Position(2, 7)};
+    head = &positions[0];
+    tail = &positions[positions.size() - 1];
 }
 
-void Snake::extendSnake()
+void Snake::extendSnake(Position new_block)
 {
+    positions.push_back(new_block);
+    tail = &positions[positions.size() - 1];
     
 }
 
@@ -34,13 +37,13 @@ Sistema di movimento
 
 void Snake::move(Position newPosition, int index)
 {
-        if (index == 0) {
-        positions[0] = newPosition;
-        return;
+        if (index == positions.size()-1) {
+            positions[positions.size()-1] = newPosition;
+            return;
     }
     Position old = positions[index];
     positions[index] = newPosition;
-    move(old, index - 1);
+    move(old, index + 1);
     return;
 }
 

@@ -13,7 +13,6 @@ class Grid {
         void print();
         void draw();
         void update(std::vector<Position> snake_pos, Position apple_pos);
-    private:
         int numRows;
         int numCols;
         

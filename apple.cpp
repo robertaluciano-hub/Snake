@@ -1,5 +1,6 @@
 #include "apple.h"
 #include "raylib.h"
+#include <random>
 
 Apple::Apple() {
     radius = grid.cellWidth / 2 - 2;
@@ -8,7 +9,10 @@ Apple::Apple() {
 
 void Apple::spawnAtRandomPosition()
 {
+    int randomX = rand() % grid.numRows;
+    int randomY = rand() % grid.numCols;
 
+    position = Position(randomX, randomY);
 }
 
 void Apple::draw()

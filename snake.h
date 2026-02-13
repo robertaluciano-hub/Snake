@@ -6,11 +6,12 @@
 class Snake {
     public:
         Snake();
-        void extendSnake();
+        void extendSnake(Position new_block);
         void checkCollision();
         Grid grid;
         void drawSnake();
         void move(Position newPosition, int index);
         Position *head;
+        Position *tail;
         std::vector<Position> positions;
 };

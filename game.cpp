@@ -41,24 +41,30 @@ void Game::handleInput(int input) {
     switch(input) {
         case(KEY_LEFT):
             new_position.y -= 1;
-            snake.move(new_position, 4);
+            snake.move(new_position, 0);
             break;
 
         case(KEY_RIGHT):
             new_position.y += 1;
-            snake.move(new_position, 4);
+            snake.move(new_position, 0);
             break;
 
         case(KEY_UP):
             new_position.x -= 1;
-            snake.move(new_position, 4);
+            snake.move(new_position, 0);
             break;
             
         case(KEY_DOWN):            
             new_position.x += 1;
-            snake.move(new_position, 4);
+            snake.move(new_position, 0);
             break;
     }
     grid.update(snake.positions, apple.position);
+
+    if(snake.head->equals(apple.position)) {
+        Position new_block = Position(snake.tail->x, (snake.tail->y)-1);     // SOSTITUIRE COORDINATE
+        //snake.extendSnake(new_block);
+        apple.spawnAtRandomPosition();
+    }
 }
 
